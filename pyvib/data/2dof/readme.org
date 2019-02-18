@@ -1,0 +1,35 @@
+
+* Description
+Synthetic data for the 2dof system shown in fig [[fig:2dof]].
+
+#+CAPTION: Schematic representation of the coupled duffing system
+#+NAME: fig:2dof
+[[./fig/2dof_duffing.pdf]]
+
+#+CAPTION: parameters for the coupled duffing system
+#+NAME: tab:2dof
+| m₁ (kg) | m₂ (kg) | k (N/m) | d (N/m) | c (N/ms) | μ (N/m³) |
+|---------+---------+---------+---------+----------+----------|
+|       1 |       1 |       1 |       5 |      0.1 |        1 |
+
+#+CAPTION: linear modal properties for the coupled duffing system
+#+NAME: tab:2dof_modal
+| Mode | Frequency (rad/s) | Damping ratio (%) |
+|    1 |              1.00 |              5.00 |
+|    2 |              3.32 |              1.51 |
+
+The equations of motion are
+m₁ẍ₁ + cẋ₁ + kx₁ + μx₁³ + d(x₁ - x₂) = p
+
+m₂ẍ₂ + cẋ₂ + kx₂ + μx₂³ + d(x₂ - x₁) = 0
+
+
+See [fn:1].
+
+[fn:1]
+Obtaining Nonlinear Frequency Responses from Broadband Testing
+E Gourc, C Grappasonni, JP Noël, T Detroux, and G Kerschen
+Chapter 20 of doi:10.1007/978-3-319-29739-2_20
+
+* Results
+See the fig folder

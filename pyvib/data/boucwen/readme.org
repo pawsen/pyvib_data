@@ -1,0 +1,3 @@
+* BoucWenData.mat
+Synthetic data for a bouc-wen system. See
+http://www.nonlinearbenchmark.org/#BoucWen

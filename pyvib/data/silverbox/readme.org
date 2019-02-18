@@ -1,0 +1,34 @@
+* Data for the silverbox system.
+The Silverbox system can be seen as an electronic implementation of the Duffing
+oscilator. It is build as a 2nd order linear time-invariant system with a 3rd
+degree polynomial static nonlinearity around it in feedback. This type of
+dynamics are often encountered in mechanical systems.
+
+See http://www.nonlinearbenchmark.org/#Silverbox or the [[http://www.it.uu.se/research/publications/reports/2013-006/2013-006-nc.pdf][technical note]]
+
+* Acquisition
+** SNLS80mV.mat
+Official data from VUB.
+
+The reference signal r(k) consists of two parts:
+
+- The first part (40000 samples) is a white Gaussian noise sequence filtered by
+  a 9 th order discrete time Butterworth filter with a cut-off frequency of 200
+  Hz. The amplitude is varied linearly over the interval from zero to its
+  maximum value
+- The second part o the signal consists of 10 successive realizations of a
+  random odd multi-sine signal
+
+Only the odd harmonics are therefore excited. The amplitude A is scaled such
+that the signal fits well within the range of the  generator.  The  period  of
+the  multisine is 1/f0, with f0=fs/8192s⁻¹
+The number of excited odd harmonics is 1342 (fmax ~200Hz)
+The  phases are  independent and uniformly  distributed  in [0,2π[
+Ten  realizations  of  the random odd multi-sine were merged, each of them separated
+by  100  zeros  to  indicate  the  start  of  a  new  realization.
+
+V1: Input
+V2: Output
+
+** SNJP
+Data acquired by Dr. Jean-Philippe Noel. The number correspond to the amplitude level.

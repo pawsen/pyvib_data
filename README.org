@@ -1,0 +1,4 @@
+* PyVib Sample Date Repository
+
+This is the versioned source for the PyVib package sample data.
+

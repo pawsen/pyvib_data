@@ -1,0 +1,55 @@
+* Data for the nonlinear beam
+Synthetic data generated from a nonlinear FE model, resembling the European COST
+Action F3 beam seen in fig [[fig:beam_setup]]. It consists of a cantilever beam
+whose free end is connected to a thin beam clamped on its other side. The thin
+beam can exhibit geometrically nonlinear behaviour and is mounted vertically to
+limit the effect of gravity.
+
+#+CAPTION: Experimental setup for the COST beam. Both vertical and horizontal setups were tested at University Liege(ULg). Horizontal setups avoids gravitational effects which cannot be ignored due to static deflection of the thin beam.
+#+NAME:   fig:beam_setup
+[[./fig/beam_setup.png]]
+
+* NLBeam.mat
+Contains M, C, K matrices for 35dof beam. The nonlinearity should be connected
+to DOF 27(0 based), connected to ground. μ₁ is cubic and μ₂ quadratic. Use a
+nonlinear newmark to simulate the system.
+
+The beam is modelled as shown in fig [[fig:beam_fem]] using 14 and 3 two-
+dimensional Bernoulli-Euler beam elements for the main and thin beam
+respectively. The connection between the two beams is modelled by an additional
+linear rotational stiffness resulting in a model with 35 dofs.
+
+#+CAPTION: FE model of the COST beam.
+#+NAME:   fig:beam_fem
+[[fig/beam_fem.pdf]]
+
+
+The geometrical and mechanical properties are from [fn:cost_beam]
+#+NAME: tab:geo_prop
+|           | Length(m) | Width (m) | Thickness (m) |
+|-----------+-----------+-----------+---------------|
+| Main beam |       0.7 |     0.014 |         0.014 |
+| Thin beam |      0.04 |     0.014 |        0.0005 |
+
+#+NAME: tab:mec_prop
+| Young's modulus (N/m²) | Density (kg/m³) | μ₁ (N/m³) | μ₂ (N/m²) | Damping          |
+|------------------------+-----------------+-----------+-----------+------------------|
+| 2.05*10¹¹              |            7800 | 8*10⁹     | -1.05*10⁷ | C = 3*10⁻⁷K + 5M |
+
+The damping is proportional damping, giving a modal damping ration of 1.27% for
+the first linear mode which is high for a steel beam.
+
+[fn:cost_beam]
+V Lenaerts, G Kerschen, and JC Golinval. "Identification of a continuous
+structure with a geometrical non-linearity. Part II: Proper orthogonal
+decomposition". eng. In: Journal of Sound and Vibration.
+doi:10.1016/j.ymssp.2007.04.002.
+
+* u/y*.mat
+Synthetic output and input. Generated from the matrices in NLBeam.mat with cubic
+and quadratic nonlinearity on DOF 27(0-based). Only the DOFs corresponding to
+the measurement locations in fig [[beam_setup]] are retained.
+Thus the nonlinearities are on dof 6 and the force dof 1 for the output y.
+
+* Results
+See fig folder
